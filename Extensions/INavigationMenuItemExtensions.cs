@@ -15,7 +15,7 @@ namespace Penguin.Navigation.Abstractions.Extensions
 
             if (child.Parent != null)
             {
-                child.Parent.Children.Remove(child);
+                _ = child.Parent.Children.Remove(child);
             }
 
             parent.Children.Add(child);
@@ -58,7 +58,7 @@ namespace Penguin.Navigation.Abstractions.Extensions
                 }
                 else
                 {
-                    Merge((T)existingNav, thisNav, GetChildren);
+                    _ = Merge((T)existingNav, thisNav, GetChildren);
                 }
             }
 
@@ -73,7 +73,7 @@ namespace Penguin.Navigation.Abstractions.Extensions
             }
 
             child.Parent = default;
-            parent.Children.Remove(child);
+            _ = parent.Children.Remove(child);
             child.UpdateProperties();
         }
 
