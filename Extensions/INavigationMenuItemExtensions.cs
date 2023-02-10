@@ -23,7 +23,7 @@ namespace Penguin.Navigation.Abstractions.Extensions
             parent.UpdateProperties();
         }
 
-        public static void AddChildren<T>(this T parent, List<T> children) where T : INavigationMenu<T>
+        public static void AddChildren<T>(this T parent, IList<T> children) where T : INavigationMenu<T>
         {
             if (children is null)
             {
