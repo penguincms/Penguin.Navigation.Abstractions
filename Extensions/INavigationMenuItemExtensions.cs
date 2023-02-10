@@ -81,17 +81,10 @@ namespace Penguin.Navigation.Abstractions.Extensions
         {
             if (string.IsNullOrWhiteSpace(parent.Name))
             {
-                parent.Name = new string(parent.Text.Where(c => char.IsLetterOrDigit(c)).ToArray());
+                parent.Name = new string(parent.Text.Where(char.IsLetterOrDigit).ToArray());
             }
 
-            if (parent.Parent == null)
-            {
-                parent.Uri = "/" + parent.Name;
-            }
-            else
-            {
-                parent.Uri = parent.Parent.Uri + "/" + parent.Name;
-            }
+            parent.Uri = parent.Parent == null ? "/" + parent.Name : parent.Parent.Uri + "/" + parent.Name;
 
             foreach (T child in parent.Children)
             {
